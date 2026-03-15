@@ -1,0 +1,26 @@
+<style>
+/* Elimina la columna lateral (sidebar) */
+aside.col-xxl-4, #sidebar-container { 
+    display: none; 
+    visibility: hidden; 
+}
+
+/* Fuerza el contenedor principal al 100% de ancho */
+.col-xxl-8, .single-main-content .col-md-7 { 
+    width: 100% !important; 
+    margin-left: 0 !important; 
+}
+
+/* Elimina márgenes laterales en los contenedores de la estructura */
+.main-content-inner, .single-main-content {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+
+/* Ajuste específico para escritorio */
+@media (min-width: 768px) { 
+    .single-main-content .col-md-7 { 
+        width: 100%; 
+    } 
+}
+</style>
