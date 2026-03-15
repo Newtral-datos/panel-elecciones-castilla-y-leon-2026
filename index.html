@@ -1,26 +1,170 @@
 <style>
-/* Elimina la columna lateral (sidebar) */
-aside.col-xxl-4, #sidebar-container { 
-    display: none; 
-    visibility: hidden; 
-}
-
-/* Fuerza el contenedor principal al 100% de ancho */
-.col-xxl-8, .single-main-content .col-md-7 { 
-    width: 100% !important; 
-    margin-left: 0 !important; 
-}
-
-/* Elimina márgenes laterales en los contenedores de la estructura */
-.main-content-inner, .single-main-content {
-    margin-left: 0 !important;
+  /* === ESTILOS COMPARTIDOS === */
+  .dw-wrapper {
+    background-color: #f8f9fa;
+    border-radius: 30px;
+    padding: 15px;
+    margin: 30px auto;
+    overflow: visible;
+    position: relative;
+    box-sizing: border-box;
+  }
+  .dw-wrapper .charts-grid {
+    display: grid;
+    gap: 15px;
+  }
+  .dw-wrapper .chart-cell {
+    min-width: 0;
+    display: flex;
+  }
+  .dw-wrapper iframe {
     width: 100% !important;
-}
+    border: none !important;
+    margin: 0 !important;
+    display: block;
+    overflow: hidden;
+  }
 
-/* Ajuste específico para escritorio */
-@media (min-width: 768px) { 
-    .single-main-content .col-md-7 { 
-        width: 100%; 
-    } 
-}
+  /* === VARIANTES DE CADA CONTENEDOR === */
+
+  /* Contenedor 1: borde superior, 2 columnas, alinea abajo, ancho 90% */
+  .dw-w1 {
+    max-width: 90%;
+    border-top: 5px solid #01f3b3;
+  }
+  .dw-w1 .charts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: end;
+  }
+  .dw-w1 .chart-cell { align-items: flex-end; }
+
+  /* Contenedor 2: sin borde, 1 columna, ancho 80% */
+  .dw-w2 {
+    max-width: 80%;
+  }
+  .dw-w2 .charts-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  /* Contenedor 3: borde inferior, 2 columnas, ancho 90% */
+  .dw-w3 {
+    max-width: 90%;
+    border-bottom: 5px solid #01f3b3;
+  }
+  .dw-w3 .charts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Contenedor 4: borde arriba y abajo, 2 columnas, alinea centro, ancho 80% */
+  .dw-w4 {
+    max-width: 80%;
+    border-top: 5px solid #01f3b3;
+    border-bottom: 5px solid #01f3b3;
+  }
+  .dw-w4 .charts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
+  .dw-w4 .chart-cell { align-items: center; }
+
+  /* === RESPONSIVE: una columna en móvil === */
+  @media (max-width: 650px) {
+    .dw-wrapper .charts-grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
 </style>
+
+<!-- ==================== CONTENEDOR 1 ==================== -->
+<!-- Hemiciclo + Tabla escaños | borde superior | 2 col | alinea abajo -->
+<div class="dw-wrapper dw-w1">
+  <div class="charts-grid">
+    <div class="chart-cell">
+      <iframe title="Diputados hemiciclo" aria-label="Hemiciclo"
+        id="datawrapper-chart-YKlJt" src="https://datawrapper.dwcdn.net/YKlJt/1/"
+        scrolling="no" frameborder="0"
+        style="width: 0; min-width: 100% !important; border: none;"
+        height="467" data-external="1"></iframe>
+    </div>
+    <div class="chart-cell">
+      <iframe title="Tabla comparación porcentaje y escaños" aria-label="Tabla"
+        id="datawrapper-chart-IJ6Y6" src="https://datawrapper.dwcdn.net/IJ6Y6/1/"
+        scrolling="no" frameborder="0"
+        style="width: 0; min-width: 100% !important; border: none;"
+        height="467" data-external="1"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTENEDOR 2 ==================== -->
+<!-- Barras comparación histórica | sin borde | 1 col -->
+<div class="dw-wrapper dw-w2">
+  <div class="charts-grid">
+    <div class="chart-cell">
+      <iframe title="Barras porcentaje de voto comparación elecciones anteriores"
+        aria-label="Barras" id="datawrapper-chart-vJzDf"
+        src="https://datawrapper.dwcdn.net/vJzDf/1/"
+        scrolling="no" frameborder="0"
+        style="width: 0; min-width: 100% !important; border: none;"
+        height="467" data-external="1"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTENEDOR 3 ==================== -->
+<!-- Mapa municipios + Mapa provincias | borde inferior | 2 col -->
+<div class="dw-wrapper dw-w3">
+  <div class="charts-grid">
+    <div class="chart-cell">
+      <iframe title="Mapa resultado elecciones municipios" aria-label="Mapa"
+        id="datawrapper-chart-SlIg9" src="https://datawrapper.dwcdn.net/SlIg9/1/"
+        scrolling="no" frameborder="0"
+        style="width: 0; min-width: 100% !important; border: none;"
+        height="467" data-external="1"></iframe>
+    </div>
+    <div class="chart-cell">
+      <iframe title="Mapa escaños por provincia" aria-label="Mapa provincias"
+        id="datawrapper-chart-4RYzt" src="https://datawrapper.dwcdn.net/4RYzt/1/"
+        scrolling="no" frameborder="0"
+        style="width: 0; min-width: 100% !important; border: none;"
+        height="467" data-external="1"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== CONTENEDOR 4 ==================== -->
+<!-- Participación provincias + Mapa municipios | borde arriba y abajo | 2 col | centra -->
+<div class="dw-wrapper dw-w4">
+  <div class="charts-grid">
+    <div class="chart-cell">
+      <iframe title="Gráfico participación provincias Castilla y León"
+        aria-label="Gráfico participación provincias Castilla y León"
+        id="datawrapper-chart-MCcUJ" src="https://datawrapper.dwcdn.net/MCcUJ/1/"
+        scrolling="no" frameborder="0"
+        style="width: 0; min-width: 100% !important; border: none;"
+        height="467" data-external="1"></iframe>
+    </div>
+    <div class="chart-cell">
+      <iframe title="Mapa recuento participación elecciones CyL municipios"
+        aria-label="Mapa municipios recuento"
+        id="datawrapper-chart-PcIy4" src="https://datawrapper.dwcdn.net/PcIy4/1/"
+        scrolling="no" frameborder="0"
+        style="width: 0; min-width: 100% !important; border: none;"
+        height="467" data-external="1"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SCRIPT ÚNICO ==================== -->
+<script type="text/javascript">
+  window.addEventListener("message", function(a) {
+    if (void 0 !== a.data["datawrapper-height"]) {
+      var e = document.querySelectorAll("iframe");
+      for (var t in a.data["datawrapper-height"])
+        for (var r, i = 0; r = e[i]; i++)
+          if (r.contentWindow === a.source) {
+            r.style.height = a.data["datawrapper-height"][t] + "px";
+          }
+    }
+  });
+</script>
